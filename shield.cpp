@@ -1,17 +1,17 @@
-#include "const.h"
+пїњ#include "const.h"
 #include "shield.h"
 #include "player.h"
 
-Shield::Shield () {
+Shield::Shield() {
 	texture.loadFromFile(IMAGES_FOLDER + SHIELD_FILE_NAME);
 	sprite.setTexture(texture);
-	sprite.setPosition(0.f, WINDOW_HEIGHT + getHeight()); // вне окна
-	//sprite.setOrigin(getWidth() / 2.0, getHeight() / 2.0); // центр щита установлен на центр корабл€
+	sprite.setPosition(0.f, WINDOW_HEIGHT + getHeight()); 
+	//sprite.setOrigin(getWidth() / 2.0, getHeight() / 2.0); 
 }
 void Shield::draw(sf::RenderWindow& window) {
-	window.draw(sprite); 
+	window.draw(sprite);
 }
-void Shield::update(sf::Vector2f position) { 
+void Shield::update(sf::Vector2f position) {
 	if (visible) { sprite.setPosition(position); }
 	//sprite.setOrigin(getWidth() / 2.0, getHeight());
 }
@@ -20,8 +20,8 @@ size_t Shield::getWidth() { return sprite.getLocalBounds().width; }
 size_t Shield::getHeight() { return sprite.getLocalBounds().height; }
 sf::FloatRect Shield::getHitBox() { return sprite.getGlobalBounds(); }
 sf::Vector2f Shield::getPosition() { return sprite.getPosition(); }
-//void Shield::setPosition(sf::Vector2f pos) { sprite.setPosition(pos); }	// установить центр щита на центр корабл€, использу€ position
-void Shield::setPosition(sf::Vector2f pos) { sprite.getPosition().x + getWidth() / 4.0, sprite.getPosition().y + getHeight() / 4.0; }
+void Shield::setPosition(sf::Vector2f pos) { sprite.setPosition(pos); }
+
 /*sf::Vector2f Shield::getCenter() {
 	return sf::Vector2f
 	(

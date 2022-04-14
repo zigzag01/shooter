@@ -17,7 +17,7 @@ Bonus::Bonus(BonusType type, sf::Vector2f position) {
 		break;
 	case FIRE_RATE:
 		this->type = type;
-		texture.loadFromFile(IMAGES_FOLDER + LASER_RATE_FILE_NAME);
+		texture.loadFromFile(IMAGES_FOLDER + BONUS_RATE_FILE_NAME);
 		sprite.setTexture(texture);
 		sprite.setPosition(position);
 		break;
