@@ -11,7 +11,7 @@
 #include "bonus.h"
 #include "explosion.h"
 #include "shield.h"
-
+#include "bullet.h"
 
 class Game {
 public:
@@ -35,4 +35,5 @@ private:
 	std::list<Bonus*> bonus_sprites;
 	Shield shield;
 	std::list<Explosion*> exp_sprites;
+	std::list<Bullet*> bullet_sprites;
 };

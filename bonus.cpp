@@ -15,12 +15,12 @@ Bonus::Bonus(BonusType type, sf::Vector2f position) {
 		sprite.setTexture(texture);
 		sprite.setPosition(position);
 		break;
-	/*case FIRE_RATE:
+	case FIRE_RATE:
 		this->type = type;
 		texture.loadFromFile(IMAGES_FOLDER + LASER_RATE_FILE_NAME);
 		sprite.setTexture(texture);
 		sprite.setPosition(position);
-		break;*/
+		break;
 	}
 }
 void Bonus::update() { sprite.move(0.f, 10.f); }

@@ -61,6 +61,9 @@ void Game::update() {
 		for (auto it = exp_sprites.begin(); it != exp_sprites.end(); it++) {
 			(*it)->update();
 		}
+		for (auto it = bullet_sprites.begin(); it != bullet_sprites.end(); it++) {          ///
+			(*it)->update();
+		}
 		check_collisions();
 		hp_text.update(std::to_string(static_cast<int>(player.getHp())));
 		shield.update(player.getPosition());
@@ -80,6 +83,9 @@ void Game::draw() {
 			(*it)->draw(window);
 		}
 		for (auto it = bonus_sprites.begin(); it != bonus_sprites.end(); it++) {
+			(*it)->draw(window);
+		}
+		for (auto it = bullet_sprites.begin(); it != bullet_sprites.end(); it++) {          ///
 			(*it)->draw(window);
 		}
 		//щит
@@ -117,12 +123,14 @@ void Game::check_collisions() {
 				(*it)->setDel(true);
 			}
 			if ((*it)->getType() == Bonus::SHIELD) {
-				
 				shield_clock.restart();
 				shield.setPosition(player.getPosition());
 				shield.setVisible(true);
 				(*it)->setDel(true);
+			}
+			if ((*it)->getType() == Bonus::FIRE_RATE) {              ///
 				
+				(*it)->setDel(true);
 			}
 		}
 	}
@@ -140,6 +148,8 @@ void Game::check_collisions() {
 		return bonus->getPosition().y > WINDOW_HEIGHT; });
 	bonus_sprites.remove_if([](Bonus* shield) {
 		return shield->getPosition().y > WINDOW_HEIGHT; });
+	bonus_sprites.remove_if([](Bonus* bullet) {                     ///
+		return bullet->getPosition().y > WINDOW_HEIGHT; });
 	exp_sprites.remove_if([](Explosion* exp) {return exp->getDel(); });
 
 	for (auto it = laser_sprites.begin(); it != laser_sprites.end(); it++) {
@@ -151,22 +161,22 @@ void Game::check_collisions() {
 				meteor_sprites[i]->spawn();
 
 				size_t chance = rand() % 10000;
-				if (chance < 100) {
+				if (chance < 500) {
 					Bonus* new_bonus = new Bonus(static_cast<Bonus::BonusType>(0),
 						meteor_sprites[i]->getPosition());
 					bonus_sprites.push_back(new_bonus);
 				}
-					else if (chance >= 100 && chance < 900) {
-						Bonus* new_bonus = new Bonus(static_cast<Bonus::BonusType>(1),
-							meteor_sprites[i]->getPosition());
-						bonus_sprites.push_back(new_bonus);
-					}
-					else if (chance >= 900 && chance < 1000) {
-						Bonus* new_bonus = new Bonus(static_cast<Bonus::BonusType>(2),
-							meteor_sprites[i]->getPosition());
-						bonus_sprites.push_back(new_bonus);
-					}
+				else if (chance >= 500 && chance < 800) {
+					Bonus* new_bonus = new Bonus(static_cast<Bonus::BonusType>(1),
+						meteor_sprites[i]->getPosition());
+					bonus_sprites.push_back(new_bonus);
+				}
+				else if (chance >= 800 && chance < 10000) {
+					Bonus* new_bonus = new Bonus(static_cast<Bonus::BonusType>(2),
+						meteor_sprites[i]->getPosition());
+					bonus_sprites.push_back(new_bonus);
 				}
 			}
 		}
 	}
+}
