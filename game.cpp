@@ -128,8 +128,10 @@ void Game::check_collisions() {
 				shield.setVisible(true);
 				(*it)->setDel(true);
 			}
-			if ((*it)->getType() == Bonus::FIRE_RATE) {              ///
-				
+			if ((*it)->getType() == Bonus::FIRE_RATE) {
+				//bullet_sprites.setPosition(player.getPosition());
+				bullet_sprites.push_back(new Bullet(player.getPosition().x +           ///
+					player.getWidth() / 2 - 5, player.getPosition().y));
 				(*it)->setDel(true);
 			}
 		}
@@ -176,6 +178,16 @@ void Game::check_collisions() {
 						meteor_sprites[i]->getPosition());
 					bonus_sprites.push_back(new_bonus);
 				}
+			}
+		}
+	}
+	for (auto it = bullet_sprites.begin(); it != bullet_sprites.end(); it++) {
+		for (size_t i = 0; i < METEORS_QTY; i++) {
+			if ((*it)->getHitBox().intersects(meteor_sprites[i]->getHitBox()))
+			{
+				Explosion* new_explosion = new Explosion(meteor_sprites[i]->getCenter());
+				exp_sprites.push_back(new_explosion);
+				meteor_sprites[i]->spawn();
 			}
 		}
 	}

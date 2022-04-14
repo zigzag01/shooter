@@ -7,7 +7,7 @@ Bullet::Bullet(float x, float y) {
 	sprite.setPosition(x, y);
 }
 void Bullet::update() {
-	sprite.move(speedx, speedy);
+	sprite.move(0.f, -LASER_SPEEDY);
 }
 size_t Bullet::getWidth() { return sprite.getLocalBounds().width; }
 size_t Bullet::getHeight() { return sprite.getLocalBounds().height; }
