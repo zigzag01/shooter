@@ -6,4 +6,5 @@
 class ManyBullets {
 private:
 	std::list<Bullet*> bullets;
+
 };

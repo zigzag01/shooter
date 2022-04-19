@@ -11,6 +11,7 @@ const std::string LASER_FILE_NAME = "laserBlue01.png";
 const std::string BONUS_RATE_FILE_NAME = "laserRed11.png";
 const std::string LASER_RATE_FILE_NAME = "laserRed01.png";
 const float LASER_SPEEDY = 10.f;
+const float LASER_SPEEDX = 6.f;
 const std::string FONT_FILE_NAME = "res/kenvector_future.ttf";
 const std::string HP_BONUS_FILE_NAME = "pill_green.png";
 const std::string SHIELD_BONUS_FILE_NAME = "shield_silver.png";

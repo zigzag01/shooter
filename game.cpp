@@ -130,7 +130,7 @@ void Game::check_collisions() {
 			}
 			if ((*it)->getType() == Bonus::FIRE_RATE) {
 				//bullet_sprites.setPosition(player.getPosition());
-				bullet_sprites.push_back(new Bullet(player.getPosition().x +           ///
+				bullet_sprites.push_back(new Bullet(player.getPosition().x +           
 					player.getWidth() / 2 - 5, player.getPosition().y));
 				(*it)->setDel(true);
 			}
