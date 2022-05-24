@@ -1,4 +1,4 @@
-п»ї#include "game.h"
+#include "game.h"
 
 Game::Game() :
 	window(sf::VideoMode(
@@ -88,7 +88,7 @@ void Game::draw() {
 		for (auto it = bullet_sprites.begin(); it != bullet_sprites.end(); it++) {          ///
 			(*it)->draw(window);
 		}
-		//С‰РёС‚
+		//щит
 		shield.draw(window);
 		for (auto it = exp_sprites.begin(); it != exp_sprites.end(); it++) {
 			(*it)->draw(window);
@@ -104,14 +104,14 @@ void Game::draw() {
 void Game::check_collisions() {
 	sf::Time now = shield_clock.getElapsedTime();
 	for (size_t i = 0; i < METEORS_QTY; i++) {
-		//РјРµС‚РµРѕСЂРѕРІ СЃ РёРіСЂРѕРєРѕРј
+		//метеоров с игроком
 		if (player.getHitBox().intersects(
 			meteor_sprites[i]->getHitBox()))
 		{
 			player.reduceHp(meteor_sprites[i]->getWidth() / 3);
 			meteor_sprites[i]->spawn();
 		}
-		//РјРµС‚РµРѕСЂРѕРІ СЃРѕ С‰РёС‚РѕРј
+		//метеоров со щитом
 		if (meteor_sprites[i]->getHitBox().intersects(shield.getHitBox())) {
 			meteor_sprites[i]->spawn();
 		}
@@ -129,10 +129,8 @@ void Game::check_collisions() {
 				(*it)->setDel(true);
 			}
 			if ((*it)->getType() == Bonus::FIRE_RATE) {
-				//bullet_sprites.setPosition(player.getPosition());
-				bullet_sprites.push_back(new Bullet(player.getPosition().x +           
-					player.getWidth() / 2 - 5, player.getPosition().y));
-				(*it)->setDel(true);
+				bullet_sprites.push_back(new Bullet(player.getPosition().x, player.getPosition().y));
+				clock.restart();
 			}
 		}
 	}

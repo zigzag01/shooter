@@ -31,4 +31,4 @@ sf::FloatRect Bonus::getHitBox() { return sprite.getGlobalBounds(); }
 sf::Vector2f Bonus::getPosition() { return sprite.getPosition(); }
 bool Bonus::getDel() { return del; }
 void Bonus::setDel(bool x) { del = x; }
-Bonus::BonusType Bonus::getType() {	return type; }
+Bonus::BonusType Bonus::getType() { return type; }

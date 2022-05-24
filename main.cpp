@@ -1,13 +1,18 @@
-#include "SFML/Graphics.hpp"
-#include "game.h"
-#include <ctime>
+#include <SFML/Graphics.hpp>
 
 using namespace sf;
 
-int main() {
-	srand(time(0));
-	rand();
-	Game game;
-	game.play();
-	return 0;
+int main()
+{
+	RenderWindow window(VideoMode(200, 200), "");
+	while (window.isOpen()) {
+		Event event;
+		while (window.pollEvent(event)) {
+			if (event.type == Event::Closed) {
+				window.close();
+			}
+			window.display();
+		}
+		return 0;
+	}
 }

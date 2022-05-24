@@ -1,11 +1,11 @@
-﻿#include "const.h"
+#include "const.h"
 #include "shield.h"
 #include "player.h"
 
 Shield::Shield() {
 	texture.loadFromFile(IMAGES_FOLDER + SHIELD_FILE_NAME);
 	sprite.setTexture(texture);
-	sprite.setPosition(0.f, WINDOW_HEIGHT + getHeight()); 
+	sprite.setPosition(0.f, WINDOW_HEIGHT + getHeight());
 	//sprite.setOrigin(getWidth() / 2.0, getHeight() / 2.0); 
 }
 void Shield::draw(sf::RenderWindow& window) {

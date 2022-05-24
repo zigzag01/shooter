@@ -12,6 +12,7 @@
 #include "explosion.h"
 #include "shield.h"
 #include "bullet.h"
+#include "bullet_list.h"
 
 class Game {
 public:
