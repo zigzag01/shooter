@@ -13,7 +13,6 @@ void Shield::draw(sf::RenderWindow& window) {
 }
 void Shield::update(sf::Vector2f position) {
 	if (visible) { sprite.setPosition(position); }
-	//sprite.setOrigin(getWidth() / 2.0, getHeight());
 }
 
 size_t Shield::getWidth() { return sprite.getLocalBounds().width; }
@@ -22,13 +21,6 @@ sf::FloatRect Shield::getHitBox() { return sprite.getGlobalBounds(); }
 sf::Vector2f Shield::getPosition() { return sprite.getPosition(); }
 void Shield::setPosition(sf::Vector2f pos) { sprite.setPosition(pos); }
 
-/*sf::Vector2f Shield::getCenter() {
-	return sf::Vector2f
-	(
-		sprite.getPosition().x + getWidth() / 2.0,
-		sprite.getPosition().y + getHeight() / 2.0
-	);
-}*/
 
 bool Shield::getDel() { return del; }
 void Shield::setDel(bool x) { del = x; }

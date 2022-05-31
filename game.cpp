@@ -125,6 +125,9 @@ void Game::check_collisions() {
 			if ((*it)->getType() == Bonus::SHIELD) {
 				shield_clock.restart();
 				shield.setPosition(player.getPosition());
+				/*shield.setPosition(
+					player.getPosition().x + player.getWidth() / 2 - shield.getWidth() / 2,
+					player.getPosition().y + player.getHeight() / 2 - shield.getHeight() / 2);*/
 				shield.setVisible(true);
 				(*it)->setDel(true);
 			}
@@ -148,7 +151,7 @@ void Game::check_collisions() {
 		return bonus->getPosition().y > WINDOW_HEIGHT; });
 	bonus_sprites.remove_if([](Bonus* shield) {
 		return shield->getPosition().y > WINDOW_HEIGHT; });
-	bonus_sprites.remove_if([](Bonus* bullet) {                     ///
+	bonus_sprites.remove_if([](Bonus* bullet) {
 		return bullet->getPosition().y > WINDOW_HEIGHT; });
 	exp_sprites.remove_if([](Explosion* exp) {return exp->getDel(); });
 
@@ -166,12 +169,12 @@ void Game::check_collisions() {
 						meteor_sprites[i]->getPosition());
 					bonus_sprites.push_back(new_bonus);
 				}
-				else if (chance >= 500 && chance < 800) {
+				else if (chance >= 500 && chance < 8000) {
 					Bonus* new_bonus = new Bonus(static_cast<Bonus::BonusType>(1),
 						meteor_sprites[i]->getPosition());
 					bonus_sprites.push_back(new_bonus);
 				}
-				else if (chance >= 800 && chance < 10000) {
+				else if (chance >= 8000 && chance < 10000) {
 					Bonus* new_bonus = new Bonus(static_cast<Bonus::BonusType>(2),
 						meteor_sprites[i]->getPosition());
 					bonus_sprites.push_back(new_bonus);
