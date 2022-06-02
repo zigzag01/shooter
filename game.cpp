@@ -163,18 +163,18 @@ void Game::check_collisions() {
 				exp_sprites.push_back(new_explosion);
 				meteor_sprites[i]->spawn();
 
-				size_t chance = rand() % 10000;
+				size_t chance = rand() % 9000;
 				if (chance < 500) {
 					Bonus* new_bonus = new Bonus(static_cast<Bonus::BonusType>(0),
 						meteor_sprites[i]->getPosition());
 					bonus_sprites.push_back(new_bonus);
 				}
-				else if (chance >= 500 && chance < 8000) {
+				else if (chance >= 500 && chance < 800) {
 					Bonus* new_bonus = new Bonus(static_cast<Bonus::BonusType>(1),
 						meteor_sprites[i]->getPosition());
 					bonus_sprites.push_back(new_bonus);
 				}
-				else if (chance >= 8000 && chance < 10000) {
+				else if (chance >= 800 && chance < 1000) {
 					Bonus* new_bonus = new Bonus(static_cast<Bonus::BonusType>(2),
 						meteor_sprites[i]->getPosition());
 					bonus_sprites.push_back(new_bonus);

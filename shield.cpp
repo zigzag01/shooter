@@ -6,7 +6,7 @@ Shield::Shield() {
 	texture.loadFromFile(IMAGES_FOLDER + SHIELD_FILE_NAME);
 	sprite.setTexture(texture);
 	sprite.setPosition(0.f, WINDOW_HEIGHT + getHeight());
-	//sprite.setOrigin(getWidth() / 2.0, getHeight() / 2.0); 
+	sprite.setOrigin(getWidth() / 8.0, getHeight() / 8.0); 
 }
 void Shield::draw(sf::RenderWindow& window) {
 	window.draw(sprite);
